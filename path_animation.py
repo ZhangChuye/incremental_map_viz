@@ -58,7 +58,7 @@ class AnimationGenerator():
 
     def generate_points(self):
         # point_path = f'{self.scenario_name}_wgs84_waypoints.pkl'
-        point_path = 'test.pkl'
+        point_path = 'bay_data_pkl.pkl'
         image = plt.imread(os.path.join(
             'background', f'{self.scenario_name}_background.jpg'))
         
@@ -108,8 +108,8 @@ if __name__ == '__main__':
     areas = 70 * np.ones((a.img_point_list.shape[0],))
     colors = np.arange(a.img_point_list.shape[0], 0, -1)
 
-    ax.scatter(a.img_point_list[:, 0], a.img_point_list[:, 1], s=areas, c = colors, cmap='RdYlBu',
-                edgecolors='k', linewidths=.8, marker='o', alpha=.75, zorder=10)
+    # ax.scatter(a.img_point_list[:, 0], a.img_point_list[:, 1], s=areas, c = colors, cmap='RdYlBu',
+                # edgecolors='k', linewidths=.8, marker='o', alpha=.75, zorder=10)
     line, = ax.plot([], [], lw=2)
     plt.axis('off')
     plt.tight_layout(pad=0)
@@ -117,7 +117,7 @@ if __name__ == '__main__':
 
     # call the animator
     anim = animation.FuncAnimation(fig, a.animate, init_func=a.init,
-                                   frames=40, interval=200, blit=True)
+                                   frames=300, blit=False)
 
     
     FFwriter = animation.FFMpegWriter()
@@ -134,4 +134,4 @@ if __name__ == '__main__':
 
     # TODO: change the right bage data to run to see if the imgage suits
     # TODO: the switching system is not good now, you should improve it 
-    
+
