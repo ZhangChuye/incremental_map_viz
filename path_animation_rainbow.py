@@ -98,6 +98,7 @@ class AnimationGenerator():
             if len(img_point_list) == 0 or np.linalg.norm(img_point - img_point_list[-1]) >= 10:
                 img_point_list.append(img_point)
 
+        img_point_list = self.insert(img_point_list)
         img_point_list = np.array(img_point_list)
         return img_point_list
 
@@ -148,6 +149,13 @@ class AnimationGenerator():
                  linewidths=.4, marker='o', alpha=.75, zorder=10)
         return scat,
 
+    def insert(self,input_list):
+        output_list=[]
+        for i in range(len(input_list)-1):
+            output_list.append((input_list[i]+input_list[i+1])/2)
+        return output_list            
+
+
 
 
 if __name__ == '__main__':
@@ -171,11 +179,11 @@ if __name__ == '__main__':
     scat = ax.scatter([],[],
                  linewidths=.4, marker='o', alpha=.75, zorder=10)
 
-    areas = 70 * np.ones((a.check_point_list.shape[0],))
+    areas = 140 * np.ones((a.check_point_list.shape[0],))
 
     if a.present_checkpoints:
         ax.scatter(a.check_point_list[:, 0], a.check_point_list[:, 1], s=areas, c = 'royalblue',
-                     linewidths=.8, marker='o', alpha=.75, zorder=10)
+                     linewidths=.8, marker='o', alpha=1, zorder=10)
 
 
     line, = ax.plot([], [], lw=2)
