@@ -28,7 +28,7 @@ def download_map_background():
         f.close()
 
 if __name__ == '__main__':
-    download_map_background()
+    # download_map_background()
     point_path = f'{scenario_name}_wgs84_waypoints.pkl'
     image = plt.imread(os.path.join('background', f'{scenario_name}_background.jpg'))
 
@@ -60,13 +60,13 @@ if __name__ == '__main__':
     fig = plt.figure()
     ax = fig.subplots()
     ax.imshow(image)
-    ax.plot(img_point_list[:, 0], img_point_list[:, 1], color=line_color, linewidth=2, alpha=.8, zorder=5)
+    # ax.plot(img_point_list[:, 0], img_point_list[:, 1], color=line_color, linewidth=2, alpha=.8, zorder=5)
     ax.scatter(img_point_list[:, 0], img_point_list[:, 1], s=areas, c = colors, cmap='RdYlBu',
                 edgecolors='k', linewidths=0.8, marker='o', alpha=.75, zorder=10)
     # ax.plot(np.array([1250, 1250 + 500/enu2img_ratio[0]]), np.array([1600, 1600]), color='w', linewidth=1, zorder=5)
     ax.set_axis_off()
     plt.tight_layout()
-    # plt.savefig(os.path.join('results', f'{scenario_name}.png'), format='png', bbox_inches='tight', dpi=400, pad_inches=0.0)
+    plt.savefig(os.path.join('results', f'{scenario_name}.png'), format='png', bbox_inches='tight', dpi=400, pad_inches=0.0)
     # plt.savefig(os.path.join('results', f'{scenario_name}.svg'), format='svg', bbox_inches='tight', dpi=400, pad_inches=0.0)
     plt.show()
 
