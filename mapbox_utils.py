@@ -5,17 +5,17 @@ import matplotlib.pyplot as plt
 import pymap3d as pm
 import numpy as np
 
-scenario_name = 'park' # 'campus'
+scenario_name = 'campus' # 'campus'
 line_color = 'royalblue'
 
 if scenario_name == 'park':
     # park
-    bounding_coordinates = [113.937,22.4868,113.9924,22.5251]
-    size = [1280, 960]
+    bounding_coordinates = [113.9345,22.4904,114.0001,22.5245]
+    size = [1280, 720]
 else:
     # campus
-    bounding_coordinates = [113.9889,22.5947,114.0003,22.6065]
-    size = [800, 900]
+    bounding_coordinates = [113.9848,22.5958,114.0048,22.6062]
+    size = [1280, 720]
 
 def download_map_background():
     header = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'}
@@ -28,7 +28,7 @@ def download_map_background():
         f.close()
 
 if __name__ == '__main__':
-    #download_map_background()
+    download_map_background()
     point_path = f'{scenario_name}_wgs84_waypoints.pkl'
     image = plt.imread(os.path.join('background', f'{scenario_name}_background.jpg'))
 
@@ -57,7 +57,7 @@ if __name__ == '__main__':
     colors = np.arange(img_point_list.shape[0], 0, -1)
     areas = 20 * np.ones((img_point_list.shape[0],))
 
-    fig = plt.figure(figsize=(4, 4.5))
+    fig = plt.figure()
     ax = fig.subplots()
     ax.imshow(image)
     ax.plot(img_point_list[:, 0], img_point_list[:, 1], color=line_color, linewidth=2, alpha=.8, zorder=5)
