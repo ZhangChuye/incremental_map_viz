@@ -16,8 +16,10 @@ class AnimationGenerator():
         self.insertation_num = 3 # numbers of insteration 
         self.path_alpha = 0.6
         self.checkpoint_alpha = 1
-        # self._line_color = 'royalblue'
-        self.present_checkpoints = False
+        
+        self.present_checkpoints = True
+
+
         if self.scenario_name == 'park':
             # park
             self._bounding_coordinates = [113.9345,22.4904,114.0001,22.5245]
@@ -161,8 +163,6 @@ class AnimationGenerator():
             output_list.append((input_list[i]+input_list[i+1])/2)
         output_list.append(input_list[-1])
         return output_list            
-
-
 
 
 if __name__ == '__main__':
